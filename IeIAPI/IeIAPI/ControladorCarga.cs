@@ -193,8 +193,6 @@ namespace IeIAPI
                 {
                     connection.Open();
 
-
-
                     int[] numeros = new int[4];
                     numeros[0] = 20; // COdigo localidad
                     numeros[1] = 20; // Buenardos
@@ -221,73 +219,6 @@ namespace IeIAPI
             }
         }
 
-       
-        private static void InsertIntoProvincia(MySqlConnection connection, dynamic data)
-        {
-            try
-            {
-                string insertQuery = "INSERT INTO Provincia (codigo, nombre) VALUES (@Codigo, @Nombre)";
-
-                using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
-                {
-                    command.Parameters.AddWithValue("@Codigo", data.PR.codigo);
-                    command.Parameters.AddWithValue("@Nombre", data.PR.nombre);
-                    command.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                //Console.WriteLine("Error inserting into Provincia: " + ex.Message);
-            }
-        }
-
-        private static void InsertIntoLocalidad(MySqlConnection connection, dynamic data)
-        {
-            try
-            {
-                string insertQuery = "INSERT INTO Localidad (codigo, nombre, en_provincia) VALUES (@Codigo, @Nombre, @EnProvincia)";
-
-                using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
-                {
-                    command.Parameters.AddWithValue("@Codigo", data.LOC.codigo);
-                    command.Parameters.AddWithValue("@Nombre", data.LOC.nombre);
-                    command.Parameters.AddWithValue("@EnProvincia", data.PR.codigo);
-                    command.ExecuteNonQuery();
-
-                }
-            }
-            catch (Exception ex)
-            {
-                //Console.WriteLine("Error inserting into Localidad: " + ex.Message);
-            }
-        }
-
-        private static void InsertIntoCentroEducativo(MySqlConnection connection, dynamic data)
-        {
-            try
-            {
-                string insertQuery = "INSERT INTO Centro_Educativo (nombre, tipo, direccion, codigo_postal, latitud, longitud, telefono, descripcion, en_localidad) " +
-                                     "VALUES (@Nombre, @Tipo, @Direccion, @CodigoPostal, @Latitud, @Longitud, @Telefono, @Descripcion, @EnLocalidad)";
-
-                using (MySqlCommand command = new MySqlCommand(insertQuery, connection))
-                {
-                    command.Parameters.AddWithValue("@Nombre", data.C_E.nombre);
-                    command.Parameters.AddWithValue("@Tipo", data.C_E.tipo);
-                    command.Parameters.AddWithValue("@Direccion", data.C_E.direccion);
-                    command.Parameters.AddWithValue("@CodigoPostal", data.C_E.codigo_postal);
-                    command.Parameters.AddWithValue("@Latitud", data.C_E.latitud);
-                    command.Parameters.AddWithValue("@Longitud", data.C_E.longitud);
-                    command.Parameters.AddWithValue("@Telefono", data.C_E.telefono);
-                    command.Parameters.AddWithValue("@Descripcion", data.C_E.descripcion);
-                    command.Parameters.AddWithValue("@EnLocalidad", data.LOC.codigo);
-                    command.ExecuteNonQuery();
-                }
-            }
-            catch (Exception ex)
-            {
-                //Console.WriteLine("Error inserting into Centro_Educativo: " + data.C_E.nombre + " " + ex.Message);
-            }
-        }
         [HttpGet]
         [Route("BorrarDatos")]
         public IActionResult BorrarDatos()
