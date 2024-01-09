@@ -2,8 +2,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 
-COPY ./ExtractorJSON.csproj
- .
+COPY ./IeIAPI.csproj .
 RUN dotnet restore
 
 COPY . .
@@ -27,7 +26,7 @@ RUN apt-get update && apt-get install -y google-chrome-stable
 
 # Etapa de publicación
 FROM build AS publish
-RUN dotnet publish -c Release -o /app/publish /p:PublishWithAspNetCoreTargetManifest=false
+RUN dotnet publish -c Release -o /app/publish /p:UseAppHost=false
 
 # Etapa final
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS final
@@ -42,4 +41,4 @@ COPY --from=install-dependencies /usr/bin/google-chrome-stable /usr/bin/
 # Definir el punto de entrada para la aplicación
 EXPOSE 5000
 EXPOSE 56581
-CMD ["dotnet", "IeICarga.dll"]
+CMD ["dotnet", "IeIAPI.dll"]
