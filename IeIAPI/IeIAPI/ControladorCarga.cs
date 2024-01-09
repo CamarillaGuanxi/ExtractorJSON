@@ -37,8 +37,8 @@ namespace IeIAPI
                     connection.Open();
 
                     int[] numeros = new int[4];
-                    numeros[0] = 20; // COdigo localidad
-                    numeros[1] = 20; // Buenardos
+                    numeros[0] = 30; // COdigo localidad
+                    numeros[1] = 30; // Buenardos
                     numeros[2] = 0; // Corregidos
                     Console.WriteLine("\n-------------------------------");
                     Console.WriteLine("Inicio de extraccion 1");
