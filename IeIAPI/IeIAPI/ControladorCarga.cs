@@ -90,8 +90,8 @@ namespace IeIAPI
                     Console.WriteLine("Inicio de extraccion 1");
                     string csvUrl = "https://raw.githubusercontent.com/CamarillaGuanxi/ExtractorJSON/main/IeIAPI/IeIAPI/MUR2.json";
 
-                    string jsonFilePath = await client.GetStringAsync(csvUrl);
-                    //string jsonFilePath = "./MUR2.json";
+                    //string jsonFilePath = await client.GetStringAsync(csvUrl);
+                    string jsonFilePath = "./MUR2.json";
                     string jsonData = System.IO.File.ReadAllText(jsonFilePath);
 
 
