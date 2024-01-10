@@ -47,7 +47,7 @@ namespace IeIAPI
                         //string csvUrl = "https://raw.githubusercontent.com/CamarillaGuanxi/IEIback/main/IeIAPI/IeIAPI/MUR.json";
 
                        // string jsonFilePath = await client.GetStringAsync(csvUrl);
-                        string jsonFilePath = "./MUR.json";
+                        string jsonFilePath = "./MUR2.json";
                         string jsonData = System.IO.File.ReadAllText(jsonFilePath);
 
 
@@ -91,7 +91,7 @@ namespace IeIAPI
                     //string csvUrl = "https://raw.githubusercontent.com/CamarillaGuanxi/ExtractorJSON/main/IeIAPI/IeIAPI/MUR2.json";
 
                     //string jsonFilePath = await client.GetStringAsync(csvUrl);
-                    string jsonFilePath = "./MUR2.json";
+                    string jsonFilePath = "./MUR.json";
                     string jsonData = System.IO.File.ReadAllText(jsonFilePath);
 
                     string json = Extractor3JSON.ExtractorJSON(numeros, jsonData);
