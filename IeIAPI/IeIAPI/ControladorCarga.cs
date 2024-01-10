@@ -88,10 +88,10 @@ namespace IeIAPI
                     numeros[2] = 0; // Corregidos
                     Console.WriteLine("\n-------------------------------");
                     Console.WriteLine("Inicio de extraccion 1");
-                    // string csvUrl = "https://raw.githubusercontent.com/CamarillaGuanxi/IEIback/main/IeIAPI/IeIAPI/MUR.json";
+                    string csvUrl = "https://raw.githubusercontent.com/CamarillaGuanxi/IEIback/main/IeIAPI/IeIAPI/MUR2.json";
 
-                    // string jsonFilePath = await client.GetStringAsync(csvUrl);
-                    string jsonFilePath = "./MUR2.json";
+                    string jsonFilePath = await client.GetStringAsync(csvUrl);
+                    //string jsonFilePath = "./MUR2.json";
                     string jsonData = System.IO.File.ReadAllText(jsonFilePath);
 
 
