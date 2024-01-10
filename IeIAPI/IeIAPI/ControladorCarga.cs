@@ -44,8 +44,9 @@ namespace IeIAPI
                         numeros[2] = 0; // Corregidos
                         Console.WriteLine("\n-------------------------------");
                         Console.WriteLine("Inicio de extraccion 1");
-                        string jsonFilePath = "https://github.com/CamarillaGuanxi/ExtractorJSON/blob/main/IeIAPI/IeIAPI/MUR.json";
-                        string jsonData = await client.GetStringAsync(jsonFilePath);
+                        string jsonFilePath = "./MUR.json";
+                        string jsonData = System.IO.File.ReadAllText(jsonFilePath);
+
 
                         string json = Extractor3JSON.ExtractorJSON(numeros, jsonData);
 
