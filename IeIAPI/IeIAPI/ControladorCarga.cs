@@ -28,26 +28,29 @@ namespace IeIAPI
         [HttpGet]
         [Route("MUR")]
 
-        public IActionResult ProcesarMURDatos()
+        public async Task<IActionResult> ProcesarMURDatos()
         {
             try
             {
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                using (HttpClient client = new HttpClient())
                 {
-                    connection.Open();
+                    using (MySqlConnection connection = new MySqlConnection(connectionString))
+                    {
+                        connection.Open();
 
-                    int[] numeros = new int[4];
-                    numeros[0] = 30; // COdigo localidad
-                    numeros[1] = 30; // Buenardos
-                    numeros[2] = 0; // Corregidos
-                    Console.WriteLine("\n-------------------------------");
-                    Console.WriteLine("Inicio de extraccion 1");
-                    string jsonFilePath = "./MUR.json";
-                    string jsonData = System.IO.File.ReadAllText(jsonFilePath);
+                        int[] numeros = new int[4];
+                        numeros[0] = 30; // COdigo localidad
+                        numeros[1] = 30; // Buenardos
+                        numeros[2] = 0; // Corregidos
+                        Console.WriteLine("\n-------------------------------");
+                        Console.WriteLine("Inicio de extraccion 1");
+                        string jsonFilePath = "https://github.com/CamarillaGuanxi/ExtractorJSON/blob/main/IeIAPI/IeIAPI/MUR.json";
+                        string jsonData = await client.GetStringAsync(jsonFilePath);
 
-                    string json = Extractor3JSON.ExtractorJSON(numeros, jsonData);
+                        string json = Extractor3JSON.ExtractorJSON(numeros, jsonData);
 
-                    return Ok(json);
+                        return Ok(json);
+                    }
                 }
             }
             catch (Exception ex)
