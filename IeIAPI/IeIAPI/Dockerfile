@@ -11,7 +11,8 @@ RUN dotnet build -c Release -o /app/build
 # Use ADD to copy CSV and XML files
 COPY ./CV.csv .
 COPY ./CAT.xml .
-
+COPY ./MUR.json .
+COPY ./MUR2.json .
 # Etapa intermedia para instalar dependencias
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS install-dependencies
 WORKDIR /app
