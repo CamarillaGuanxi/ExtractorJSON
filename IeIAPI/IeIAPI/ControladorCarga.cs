@@ -39,8 +39,8 @@ namespace IeIAPI
                         connection.Open();
 
                         int[] numeros = new int[4];
-                        numeros[0] = 30; // COdigo localidad
-                        numeros[1] = 30; // Buenardos
+                        numeros[0] = 300; // COdigo localidad
+                        numeros[1] = 300; // Buenardos
                         numeros[2] = 0; // Corregidos
                         Console.WriteLine("\n-------------------------------");
                         Console.WriteLine("Inicio de extraccion 1");
@@ -83,17 +83,16 @@ namespace IeIAPI
                     connection.Open();
 
                     int[] numeros = new int[4];
-                    numeros[0] = 45; // COdigo localidad
-                    numeros[1] = 45; // Buenardos
+                    numeros[0] = 450; // COdigo localidad
+                    numeros[1] = 450; // Buenardos
                     numeros[2] = 0; // Corregidos
                     Console.WriteLine("\n-------------------------------");
                     Console.WriteLine("Inicio de extraccion 1");
-                    string csvUrl = "https://raw.githubusercontent.com/CamarillaGuanxi/ExtractorJSON/main/IeIAPI/IeIAPI/MUR2.json";
+                    //string csvUrl = "https://raw.githubusercontent.com/CamarillaGuanxi/ExtractorJSON/main/IeIAPI/IeIAPI/MUR2.json";
 
                     //string jsonFilePath = await client.GetStringAsync(csvUrl);
                     string jsonFilePath = "./MUR2.json";
                     string jsonData = System.IO.File.ReadAllText(jsonFilePath);
-
 
                     string json = Extractor3JSON.ExtractorJSON(numeros, jsonData);
 
