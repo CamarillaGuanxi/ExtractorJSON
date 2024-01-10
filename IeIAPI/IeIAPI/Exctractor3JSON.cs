@@ -114,13 +114,32 @@ namespace IeIAPI
                     {
                         codPostal = originalDataObject.cpcen;
                     }
+
+                    
+
                     ///Datos a string
                     String nombre = originalDataObject.dencen;
                     String dir = originalDataObject.domcen;
                     String telefono = originalDataObject.telcen;
-                    String longitud = originalDataObject["geo-referencia"].lon;
-                    String latitud = originalDataObject["geo-referencia"].lat;
+                    // Inicializar variables para latitud y longitud
+                    String latitud = "";
+                    String longitud = "";
+
+                    // Comprobar si 'geo-referencia' existe y tiene tanto 'lat' como 'lon'
+                    if (originalDataObject["geo-referencia"] != null &&
+                        originalDataObject["geo-referencia"].lat != null &&
+                        originalDataObject["geo-referencia"].lon != null)
+                    {
+                        latitud = originalDataObject["geo-referencia"].lat;
+                        longitud = originalDataObject["geo-referencia"].lon;
+                    }
+                    else
+                    {
+                        error = true;
+                        Console.WriteLine("Error encontrado en el elemento " + i + " de los datos JSON: 'geo-referencia' incompleto o ausente.");
+                    }
                     String descipcion = originalDataObject.presentacionCorta;
+
                     if (!cen.Any(Centro => Centro.nombre == nombre && Centro.codigo_postal == codPostal))
                     {
                         cen.Add(new Centro_Educativo(nombre, codPostal));
