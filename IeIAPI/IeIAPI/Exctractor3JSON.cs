@@ -137,6 +137,9 @@ namespace IeIAPI
                     {
                         error = true;
                     }
+                    if(dir.Length == 0) {
+                        error = true;
+                    }
                     var transformedObject = new
                     {
                         C_E = new
